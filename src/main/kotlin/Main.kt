@@ -1,6 +1,7 @@
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 fun main(args: Array<String>) {
     GlobalScope.launch {
@@ -8,5 +9,7 @@ fun main(args: Array<String>) {
         print("World")
     }
     println("Hello ")
-    Thread.sleep(3000)
+    runBlocking {
+        delay(3000)
+    }
 }
