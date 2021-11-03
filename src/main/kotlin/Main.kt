@@ -1,15 +1,14 @@
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 fun main(args: Array<String>) {
-    GlobalScope.launch {
-        delay(2000)
-        print("World")
-    }
-    println("Hello ")
     runBlocking {
-        delay(3000)
+        val job = this.launch {
+            delay(10000)
+            print("World")
+        }
+        println("Hello ")
+        delay(5000)
+        job.cancel()
+        job.join()
     }
 }
